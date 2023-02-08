@@ -105,6 +105,7 @@ public class HospitalSetController {
     @GetMapping("/findAll")
     @ApiOperation(value = "查询所有医院的设置信息")
     public R findAll(){
+        int a=10/0;
         List<HospitalSet> list = hospitalSetService.list();
         return R.ok().data("items",list);
     }

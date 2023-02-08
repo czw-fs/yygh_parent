@@ -3,6 +3,7 @@ package com.atguigu.yygh.hosp;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 
 /**
  * @author: fs
@@ -10,6 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @Description: everything is ok
  */
 @SpringBootApplication
+@ComponentScan("com.atguigu.yygh")//扫描依赖模块
 @MapperScan(value = "com.atguigu.yygh.hosp.mapper")
 public class ServiceHospMainStart {
     public static void main(String[] args) {

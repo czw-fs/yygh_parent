@@ -24,26 +24,26 @@ public class CodeGet {
         // 全局配置
         GlobalConfig gc = new GlobalConfig();
         String projectPath = System.getProperty("user.dir");
-        //gc.setOutputDir(projectPath + "/src/main/java");
-        gc.setOutputDir("D:\\OneDrive\\桌面\\fs\\后端\\project\\project_test\\yygh_parent\\service\\service_hosp"+"/src/main/java");
+        //gc.setOutputDir(projectPath + "/src/main/java");改:::
+        gc.setOutputDir("D:\\OneDrive\\桌面\\fs\\后端\\project\\project_test\\yygh_parent\\service\\service_cmn"+"/src/main/java");
 
         gc.setServiceName("%sService");	//去掉Service接口的首字母I
         gc.setAuthor("atguigu");
         gc.setOpen(false);
         mpg.setGlobalConfig(gc);
 
-        // 3、数据源配置
+        // 3、数据源配置改:::
         DataSourceConfig dsc = new DataSourceConfig();
-        dsc.setUrl("jdbc:mysql://127.0.0.1:3306/yygh_hosp");
+        dsc.setUrl("jdbc:mysql://127.0.0.1:3306/yygh_cmn");
         dsc.setDriverName("com.mysql.jdbc.Driver");
         dsc.setUsername("root");
         dsc.setPassword("fsfs");
         dsc.setDbType(DbType.MYSQL);
         mpg.setDataSource(dsc);
 
-        // 4、包配置
+        // 4、包配置改:::
         PackageConfig pc = new PackageConfig();
-        pc.setModuleName("hosp"); //模块名
+        pc.setModuleName("cmn"); //模块名
         pc.setParent("com.atguigu.yygh");
         pc.setController("controller");
         pc.setEntity("entity");
@@ -53,8 +53,8 @@ public class CodeGet {
 
         // 5、策略配置
         StrategyConfig strategy = new StrategyConfig();
-
-        strategy.setInclude("hospital_set");
+        //改:::
+        strategy.setInclude("dict");//表名
 
         strategy.setNaming(NamingStrategy.underline_to_camel);//数据库表映射到实体的命名策略
 

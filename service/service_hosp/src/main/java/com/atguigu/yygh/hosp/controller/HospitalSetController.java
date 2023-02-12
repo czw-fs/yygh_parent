@@ -3,7 +3,11 @@ package com.atguigu.yygh.hosp.controller;
 
 import com.atguigu.yygh.common.result.R;
 import com.atguigu.yygh.common.utils.MD5;
+import com.atguigu.yygh.hosp.bean.Result;
+import com.atguigu.yygh.hosp.service.HospitalService;
 import com.atguigu.yygh.hosp.service.HospitalSetService;
+import com.atguigu.yygh.hosp.utils.HttpRequestHelper;
+import com.atguigu.yygh.model.hosp.Hospital;
 import com.atguigu.yygh.model.hosp.HospitalSet;
 import com.atguigu.yygh.vo.hosp.HospitalSetQueryVo;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -16,7 +20,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 /**
@@ -36,6 +42,9 @@ public class HospitalSetController {
 
     @Autowired
     private HospitalSetService hospitalSetService;
+
+
+
 
     //锁定与解锁:更改状态
     @PutMapping("/status/{id}/{status}")
@@ -85,6 +94,7 @@ public class HospitalSetController {
         return R.ok();
     }
 
+    //条件分页查询
     @PostMapping("/page/{pageNum}/{size}")
     public R getPageInfo(@ApiParam(name = "pageNum",value = "当前页")@PathVariable("pageNum")Integer pageNum,
                          @ApiParam(name = "size",value = "每页显示多少条")@PathVariable("size")Integer size,

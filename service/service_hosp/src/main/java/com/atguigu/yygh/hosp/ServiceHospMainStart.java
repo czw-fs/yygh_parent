@@ -11,7 +11,7 @@ import org.springframework.context.annotation.ComponentScan;
  * @Description: everything is ok
  */
 @SpringBootApplication
-@ComponentScan("com.atguigu.yygh")//扫描依赖模块
+@ComponentScan("com.atguigu.yygh")//不仅能扫描自己还能扫描依赖模块
 @MapperScan(value = "com.atguigu.yygh.hosp.mapper")
 public class ServiceHospMainStart {
     public static void main(String[] args) {

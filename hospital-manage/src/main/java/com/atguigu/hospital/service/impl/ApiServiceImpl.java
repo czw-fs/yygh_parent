@@ -174,7 +174,7 @@ public class ApiServiceImpl implements ApiService {
     }
 
     @Override
-    public boolean removeDepartment(String depcode) {
+    public boolean  removeDepartment(String depcode) {
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("hoscode",this.getHoscode());
         paramMap.put("depcode",depcode);

@@ -1,8 +1,11 @@
 package com.atguigu.yygh.hosp.controller;
 
+
+import com.atguigu.yygh.common.result.R;
 import com.atguigu.yygh.hosp.bean.Result;
-import com.atguigu.yygh.hosp.service.DepartmentService;
+import com.atguigu.yygh.hosp.service.ScheduleService;
 import com.atguigu.yygh.hosp.utils.HttpRequestHelper;
+import com.atguigu.yygh.model.hosp.Schedule;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,50 +17,40 @@ import java.util.Map;
 
 /**
  * @author: fs
- * @date: 2023/2/12 17:24
+ * @date: 2023/2/12 21:37
  * @Description: everything is ok
  */
 @RestController
 @RequestMapping("/api/hosp")
-public class DepartmentController {
+public class ScheduleController {
+
 
     @Autowired
-    private DepartmentService departmentService;
+    private ScheduleService scheduleService;
 
-
-    //医院的删除
-    @PostMapping("/department/remove")
+    @PostMapping("/schedule/remove")
     public Result remove(HttpServletRequest request){
         Map<String, Object> map = HttpRequestHelper.switchMap(request.getParameterMap());
 
-        //验证:~~
+        //验证sign~~
 
-        departmentService.remove(map);
+        scheduleService.remove(map);
         return Result.ok();
     }
 
+    @PostMapping("/schedule/list")
+    public Result getSchedulePage(HttpServletRequest request){
+        Map<String, Object> map = HttpRequestHelper.switchMap(request.getParameterMap());
+        Page<Schedule> schedulePage = scheduleService.getSchedulePage(map);
+        return Result.ok(schedulePage);
+    }
 
-    //查询科室信息
-    @PostMapping("/department/list")
-    public Result<Page> list(HttpServletRequest request){
 
+    @PostMapping("/saveSchedule")
+    public Result saveSchedule(HttpServletRequest request){
         Map<String, Object> map = HttpRequestHelper.switchMap(request.getParameterMap());
 
-        //验证:....
-
-        Page page = departmentService.getDepartmentPage(map);
-
-        return Result.ok(page);
-    }
-
-    @PostMapping("/saveDepartment")
-    public Result saveDepartment(HttpServletRequest request){
-        //格式转换
-        Map<String, String[]> parameterMap = request.getParameterMap();
-        Map<String, Object> map = HttpRequestHelper.switchMap(parameterMap);
-
-        departmentService.saveDepartment(map);
+        scheduleService.saveSchedule(map);
         return Result.ok();
     }
-
 }

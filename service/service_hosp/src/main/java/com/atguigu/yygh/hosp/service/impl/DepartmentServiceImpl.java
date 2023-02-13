@@ -25,6 +25,8 @@ public class DepartmentServiceImpl implements DepartmentService {
     @Autowired
     private DepartmentRepository departmentRepository;
 
+
+
     @Override
     public void saveDepartment(Map<String, Object> map) {
         //将map转化为json字符串,再将json字符串转换为对应的对象
@@ -73,5 +75,17 @@ public class DepartmentServiceImpl implements DepartmentService {
 
         Page<Department> all = departmentRepository.findAll(departmentExample, pageable);
         return all;
+    }
+
+    @Override
+    public void remove(Map<String, Object> map) {
+        String hoscode = (String)map.get("hoscode");
+        String depcode = (String)map.get("depcode");
+
+        Department department = departmentRepository.findByHoscodeAndDepcode(hoscode, depcode);
+
+        if(department != null){
+            departmentRepository.deleteById(department.getId());
+        }
     }
 }

@@ -1,4 +1,4 @@
-package com.atguigu.yygh.hosp.controller;
+package com.atguigu.yygh.hosp.controller.api;
 
 import com.atguigu.yygh.hosp.bean.Result;
 import com.atguigu.yygh.hosp.service.DepartmentService;
@@ -19,7 +19,7 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/api/hosp")
-public class DepartmentController {
+public class ApiDepartmentController {
 
     @Autowired
     private DepartmentService departmentService;

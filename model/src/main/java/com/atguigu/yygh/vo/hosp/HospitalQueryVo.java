@@ -1,8 +1,10 @@
 package com.atguigu.yygh.vo.hosp;
 
+import com.atguigu.yygh.model.hosp.Hospital;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import org.springframework.data.domain.Page;
 
 import java.io.Serializable;
 
@@ -32,5 +34,7 @@ public class HospitalQueryVo implements Serializable {
 
 	@ApiModelProperty(value = "状态")
 	private Integer status;
+
+
 }
 

@@ -1,7 +1,6 @@
 package com.atguigu.yygh.cmn.service;
 
 
-import com.atguigu.yygh.common.result.R;
 import com.atguigu.yygh.model.cmn.Dict;
 import com.baomidou.mybatisplus.extension.service.IService;
 import org.springframework.web.multipart.MultipartFile;
@@ -26,4 +25,8 @@ public interface DictService extends IService<Dict> {
     void download(HttpServletResponse response) throws IOException;
 
     void upload(MultipartFile file) throws IOException;
+
+    String getNameByValue(Long value);
+
+    String getNameByDictCodeAndValue(String dictCode, Long value);
 }

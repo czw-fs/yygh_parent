@@ -50,9 +50,22 @@ public class DictController {
     }
 
     @GetMapping("/childList/{pid}")
-    public R getChildByListByPid(@PathVariable Long pid){
+    public R getChildByListByPid(@PathVariable Long pid) {
         List<Dict> dictList = dictService.getChildByListByPid(pid);
-        return R.ok().data("items",dictList);
+        return R.ok().data("items", dictList);
+    }
+
+    //根据医院所属的市区编号查询省市区的文字
+    @GetMapping("/{value}")
+    public String getNameByValue(@PathVariable("value") Long value) {
+        return dictService.getNameByValue(value);
+    }
+
+    //根据医院的等级编号查询医院等级信息
+    @GetMapping("/{dictCode}/{value}")
+    public String getNameByDictCodeAndValue(@PathVariable("dictCode") String dictCode,
+                                            @PathVariable("value") Long value) {
+        return dictService.getNameByDictCodeAndValue(dictCode, value);
     }
 }
 

@@ -2,7 +2,6 @@ package com.atguigu.yygh.cmn.service.impl;
 
 
 import com.alibaba.excel.EasyExcel;
-import com.atguigu.yygh.cmn.excel.StudengListener;
 import com.atguigu.yygh.cmn.listener.DictListener;
 import com.atguigu.yygh.cmn.mapper.DictMapper;
 import com.atguigu.yygh.cmn.service.DictService;
@@ -40,6 +39,31 @@ public class DictServiceImpl extends ServiceImpl<DictMapper, Dict> implements Di
     @CacheEvict(value = "abc",allEntries = true)
     public void upload(MultipartFile file) throws IOException {
         EasyExcel.read(file.getInputStream(), DictEeVo.class,new DictListener(baseMapper)).sheet(0).doRead();
+    }
+
+    @Override
+    public String getNameByValue(Long value) {
+        QueryWrapper<Dict> dictQueryWrapper = new QueryWrapper<>();
+        dictQueryWrapper.eq("value",value);
+        Dict dict = baseMapper.selectOne(dictQueryWrapper);
+        if(dict != null){
+            return dict.getName();
+        }
+        return null;
+    }
+
+    @Override
+    public String getNameByDictCodeAndValue(String dictCode, Long value) {
+        QueryWrapper<Dict> dictQueryWrapper1 = new QueryWrapper<>();
+        dictQueryWrapper1.eq("dict_code",dictCode);
+        Dict dict1 = baseMapper.selectOne(dictQueryWrapper1);
+
+        QueryWrapper<Dict> dictQueryWrapper2 = new QueryWrapper<>();
+        dictQueryWrapper2.eq("parent_id",dict1.getId());
+        dictQueryWrapper2.eq("value",value);
+        Dict dict2 = baseMapper.selectOne(dictQueryWrapper2);
+
+        return dict2.getName();
     }
 
     @Override

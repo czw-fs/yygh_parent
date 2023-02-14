@@ -1,14 +1,12 @@
-package com.atguigu.yygh.hosp.controller;
+package com.atguigu.yygh.hosp.controller.api;
 
 import com.atguigu.yygh.common.exception.YyghException;
-import com.atguigu.yygh.common.result.R;
 import com.atguigu.yygh.common.utils.MD5;
 import com.atguigu.yygh.hosp.bean.Result;
 import com.atguigu.yygh.hosp.service.HospitalService;
 import com.atguigu.yygh.hosp.utils.HttpRequestHelper;
 import com.atguigu.yygh.model.hosp.Hospital;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,7 +22,7 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/api/hosp")
-public class HospitalController {
+public class ApiHospitalController {
 
     @Autowired
     private HospitalService hospitalService;

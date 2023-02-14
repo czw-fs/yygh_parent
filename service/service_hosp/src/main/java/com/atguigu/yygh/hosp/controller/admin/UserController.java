@@ -1,4 +1,4 @@
-package com.atguigu.yygh.hosp.controller;
+package com.atguigu.yygh.hosp.controller.admin;
 
 import com.atguigu.yygh.common.result.R;
 import org.springframework.web.bind.annotation.*;

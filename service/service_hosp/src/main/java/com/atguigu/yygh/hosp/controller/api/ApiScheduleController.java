@@ -1,7 +1,6 @@
-package com.atguigu.yygh.hosp.controller;
+package com.atguigu.yygh.hosp.controller.api;
 
 
-import com.atguigu.yygh.common.result.R;
 import com.atguigu.yygh.hosp.bean.Result;
 import com.atguigu.yygh.hosp.service.ScheduleService;
 import com.atguigu.yygh.hosp.utils.HttpRequestHelper;
@@ -22,7 +21,7 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/api/hosp")
-public class ScheduleController {
+public class ApiScheduleController {
 
 
     @Autowired

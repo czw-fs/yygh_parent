@@ -1,0 +1,36 @@
+server:
+  port: 8222
+
+spring:
+  application:
+    name: service-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        #一个predicates对应一个路径
+        #admin
+        - id: SERVICE-HOSP-admin1
+          uri: lb://service-hosp
+          predicates:
+            - Path=/*/hosp/** # 路径匹配
+        #admin
+        - id: SERVICE-HOSP-admin2
+          uri: lb://service-hosp
+          predicates:
+            - Path=/*/hospital/** # 路径匹配
+        #user
+        - id: SERVICE-HOSP-user
+          uri: lb://service-hosp
+          predicates:
+            - Path=/*/user/** # 路径匹配
+        #cmn
+        - id: SERVICE-CMN
+          uri: lb://service-cmn
+          predicates:
+            - Path=/*/cmn/** # 路径匹配
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848

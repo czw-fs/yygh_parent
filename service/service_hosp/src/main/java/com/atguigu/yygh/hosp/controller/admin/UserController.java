@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequestMapping("/admin/user")
-@CrossOrigin
 public class UserController {
     @PostMapping("/login")
     public R login(){

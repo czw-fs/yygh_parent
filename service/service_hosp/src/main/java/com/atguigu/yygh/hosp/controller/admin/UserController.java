@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
     @PostMapping("/login")
     public R login(){
-        return R.ok().data("taken","admin-token");
+            return R.ok().data("token","admin-token");
     }
 
     @GetMapping("/info")

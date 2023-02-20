@@ -1,7 +1,9 @@
 package com.atguigu.yygh.hosp.service;
 
+import com.atguigu.yygh.vo.hosp.DepartmentVo;
 import org.springframework.data.domain.Page;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -17,4 +19,7 @@ public interface DepartmentService {
 
     void remove(Map<String, Object> map);
 
+    List<DepartmentVo> getDepartmentList(String hoscode);
+
+    String getDepName(String hoscode, String depcode);
 }

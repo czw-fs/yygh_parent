@@ -19,6 +19,7 @@ import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -101,7 +102,12 @@ public class HospitalServiceImpl implements HospitalService {
         if(!StringUtils.isEmpty(hospitalQueryVo.getCityCode())){
             hospital.setCityCode(hospitalQueryVo.getCityCode());
         }
-
+        if(!StringUtils.isEmpty(hospitalQueryVo.getHostype())){
+            hospital.setHostype(hospitalQueryVo.getHostype());
+        }
+        if(!StringUtils.isEmpty(hospitalQueryVo.getDistrictCode())){
+            hospital.setDistrictCode(hospitalQueryVo.getDistrictCode());
+        }
         //创建匹配器，即如何使用查询条件
         ExampleMatcher matcher = ExampleMatcher.matching() //构建对象
                 //.withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING) //改变默认字符串匹配方式：模糊查询
@@ -151,6 +157,18 @@ public class HospitalServiceImpl implements HospitalService {
     @Override
     public Hospital detail(String id) {
         Hospital hospital = hospitalRepository.findById(id).get();
+        this.packageHospital(hospital);
+        return hospital;
+    }
+
+    @Override
+    public List<Hospital> findByNameLike(String name) {
+        return hospitalRepository.findByHosnameLike(name);
+    }
+
+    @Override
+    public Hospital getHospitalDetail(String hoscode) {
+        Hospital hospital = hospitalRepository.findByHoscode(hoscode);
         this.packageHospital(hospital);
         return hospital;
     }

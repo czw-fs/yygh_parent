@@ -22,7 +22,7 @@ import java.util.List;
  * @date: 2023/2/14 15:41
  * @Description: everything is ok
  */
-@Component
+//@Component
 public class MyGlobalFilter implements GlobalFilter , Ordered {
 
     private AntPathMatcher antPathMatcher = new AntPathMatcher();

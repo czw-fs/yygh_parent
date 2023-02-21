@@ -21,7 +21,7 @@ spring:
           uri: lb://service-hosp
           predicates:
             - Path=/*/hospital/** # 路径匹配
-        #user
+        #admin/user
         - id: SERVICE-HOSP-user
           uri: lb://service-hosp
           predicates:
@@ -36,6 +36,16 @@ spring:
           uri: lb://service-hosp
           predicates:
             - Path=/admin/** # 路径匹配
+        #user
+        - id: service-user
+          uri: lb://service-user
+          predicates:
+            - Path=/*/userinfo/** # 路径匹配
+        #user/sms
+        - id: service-msm
+          uri: lb://service-msm
+          predicates:
+            - Path=/*/sms/** # 路径匹配
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848

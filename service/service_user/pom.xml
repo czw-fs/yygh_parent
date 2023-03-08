@@ -18,7 +18,14 @@
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>com.atguigu</groupId>
+            <artifactId>service_cmn_client</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
         <!--httpclient-->
+
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
@@ -28,6 +35,8 @@
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
         </dependency>
+
+
     </dependencies>
 
 </project>

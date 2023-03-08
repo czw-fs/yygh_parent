@@ -25,7 +25,7 @@ public class CodeGet {
         GlobalConfig gc = new GlobalConfig();
         String projectPath = System.getProperty("user.dir");
         //gc.setOutputDir(projectPath + "/src/main/java");改:::
-        gc.setOutputDir("D:\\OneDrive\\桌面\\fs\\后端\\project\\project_test\\yygh_parent\\service\\service_user"+"/src/main/java");
+        gc.setOutputDir("D:\\OneDrive\\桌面\\fs\\后端\\project\\project_test\\yygh_parent\\service\\service_order"+"/src/main/java");
 
         gc.setServiceName("%sService");	//去掉Service接口的首字母I
         gc.setAuthor("atguigu");
@@ -34,7 +34,7 @@ public class CodeGet {
 
         // 3、数据源配置改:::
         DataSourceConfig dsc = new DataSourceConfig();
-        dsc.setUrl("jdbc:mysql://127.0.0.1:3306/yygh_user");
+        dsc.setUrl("jdbc:mysql://127.0.0.1:3306/yygh_order");
         dsc.setDriverName("com.mysql.jdbc.Driver");
         dsc.setUsername("root");
         dsc.setPassword("fsfs");
@@ -43,7 +43,7 @@ public class CodeGet {
 
         // 4、包配置改:::
         PackageConfig pc = new PackageConfig();
-        pc.setModuleName("user"); //模块名
+        pc.setModuleName("order"); //模块名
         pc.setParent("com.atguigu.yygh");
         pc.setController("controller");
         pc.setEntity("entity");
@@ -54,7 +54,7 @@ public class CodeGet {
         // 5、策略配置
         StrategyConfig strategy = new StrategyConfig();
         //改:::
-        strategy.setInclude("user_info");//表名
+        strategy.setInclude("order_info");//表名
 
         strategy.setNaming(NamingStrategy.underline_to_camel);//数据库表映射到实体的命名策略
 

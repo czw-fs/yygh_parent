@@ -31,11 +31,6 @@ spring:
           uri: lb://service-cmn
           predicates:
             - Path=/*/cmn/** # 路径匹配
-        #admin/other
-        - id: SERVICE-HOSP-other
-          uri: lb://service-hosp
-          predicates:
-            - Path=/admin/** # 路径匹配
         #user
         - id: service-user
           uri: lb://service-user
@@ -46,6 +41,26 @@ spring:
           uri: lb://service-msm
           predicates:
             - Path=/*/sms/** # 路径匹配
+        #oss
+        - id: service-oss
+          uri: lb://service-oss
+          predicates:
+            - Path=/*/oss/** # 路径匹配
+        #order
+        - id: service-order
+          uri: lb://service-orders
+          predicates:
+            - Path=/*/order/** # 路径匹配
+        #service-sta
+        - id: service-sta
+          uri: lb://service-sta
+          predicates:
+            - Path=/*/statistics/** # 路径匹配
+        #admin/other
+        - id: SERVICE-HOSP-other
+          uri: lb://service-hosp
+          predicates:
+            - Path=/admin/** # 路径匹配
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
